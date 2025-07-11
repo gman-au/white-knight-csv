@@ -4,7 +4,7 @@
         <TargetFramework>net9.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
-        <DebugType>Embedded</DebugType>
+        <DebugType>portable</DebugType>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <IncludeSymbols>true</IncludeSymbols>
         <IncludeSource>true</IncludeSource>

@@ -41,6 +41,9 @@ namespace White.Knight.Csv.Tests.Integration
                 Path
                     .Combine(_options.FolderPath, fileName);
 
+            if (!Directory.Exists(_options.FolderPath))
+                Directory.CreateDirectory(_options.FolderPath);
+
             await using var writer = new StreamWriter(filePath);
             await using var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture);
 

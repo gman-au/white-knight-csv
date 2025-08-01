@@ -17,7 +17,7 @@ namespace White.Knight.Csv
         where TD : new()
     {
         private readonly ICsvLoader<TD> _csvLoader = repositoryFeatures.CsvLoader;
-        private readonly IRepositoryExceptionWrapper _repositoryExceptionWrapper = repositoryFeatures.ExceptionWrapper;
+        private readonly IRepositoryExceptionRethrower _exceptionRethrower = repositoryFeatures.ExceptionRethrower;
         protected readonly ILogger Logger = repositoryFeatures.LoggerFactory.CreateLogger<CsvFileKeylessRepositoryBase<TD>>();
         protected readonly Stopwatch Stopwatch = new();
 
@@ -43,7 +43,7 @@ namespace White.Knight.Csv
                 var results =
                     await
                         queryable
-                            .PerformCommandQueryAsync(command);
+                            .ApplyCommandQueryAsync(command);
 
                 Logger
                     .LogDebug("Queried records of type [{type}] in {ms} ms", typeof(TD).Name, Stopwatch.ElapsedMilliseconds);
@@ -66,8 +66,8 @@ namespace White.Knight.Csv
 
         protected Exception RethrowRepositoryException(Exception exception)
         {
-            return _repositoryExceptionWrapper != null
-                ? _repositoryExceptionWrapper.Rethrow(exception)
+            return _exceptionRethrower != null
+                ? _exceptionRethrower.Rethrow(exception)
                 : exception;
         }
     }

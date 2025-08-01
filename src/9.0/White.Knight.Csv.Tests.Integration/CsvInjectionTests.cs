@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using White.Knight.Csv.Injection;
 using White.Knight.Csv.Options;
 using White.Knight.Csv.Tests.Integration.Repositories;
+using White.Knight.Injection.Abstractions;
 using White.Knight.Tests.Abstractions;
 using White.Knight.Tests.Abstractions.Injection;
 using White.Knight.Tests.Abstractions.Tests;
@@ -25,7 +26,8 @@ namespace White.Knight.Csv.Tests.Integration
                     .AddAttributedCsvRepositories(RepositoryAssembly);
 
                 ServiceCollection
-                    .AddCsvRepositoryOptions();
+                    .AddRepositoryFeatures()
+                    .AddCsvRepositoryFeatures();
             }
 
             public override void AssertLoggerFactoryResolved()

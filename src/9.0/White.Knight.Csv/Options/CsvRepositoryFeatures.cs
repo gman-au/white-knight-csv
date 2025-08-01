@@ -6,13 +6,13 @@ namespace White.Knight.Csv.Options
 {
     public class CsvRepositoryFeatures<T>(
         ICsvLoader<T> csvLoader,
-        IRepositoryExceptionWrapper exceptionWrapper = null,
+        IRepositoryExceptionRethrower exceptionRethrower = null,
         ILoggerFactory loggerFactory = null)
-        : IRepositoryOptions<T>
+        : ICsvRepositoryFeatures<T>
     {
         public ICsvLoader<T> CsvLoader { get; set; } = csvLoader;
 
-        public IRepositoryExceptionWrapper ExceptionWrapper { get; set; } = exceptionWrapper;
+        public IRepositoryExceptionRethrower ExceptionRethrower { get; set; } = exceptionRethrower;
 
         public ILoggerFactory LoggerFactory { get; set; } = loggerFactory ?? new NullLoggerFactory();
     }

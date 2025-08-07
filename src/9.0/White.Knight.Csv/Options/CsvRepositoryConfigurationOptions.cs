@@ -1,6 +1,8 @@
-﻿namespace White.Knight.Csv.Options
+﻿using White.Knight.Abstractions.Options;
+
+namespace White.Knight.Csv.Options
 {
-    public class CsvRepositoryConfigurationOptions
+    public class CsvRepositoryConfigurationOptions : RepositoryConfigurationOptions
     {
         public string FolderPath { get; set; }
     }

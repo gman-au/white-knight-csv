@@ -33,7 +33,7 @@ namespace White.Knight.Csv.Tests.Integration
                     .ArrangeXunitOutputLogging(testOutputHelper);
 
                 ServiceCollection
-                    .AddCsvRepositoryFeatures();
+                    .AddCsvRepositoryFeatures(Configuration);
 
                 LoadServiceProvider();
             }

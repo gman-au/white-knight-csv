@@ -17,7 +17,7 @@ namespace White.Knight.Csv.Tests.Integration
     {
         private readonly CsvRepositoryConfigurationOptions _options = optionsAccessor.Value;
 
-        public async Task<AbstractedRepositoryTestData> GenerateRepositoryTestDataAsync()
+        public async Task<AbstractedRepositoryTestData> SetupRepositoryTestDataAsync()
         {
             var testData =
                 testDataGenerator

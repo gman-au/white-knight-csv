@@ -36,10 +36,12 @@ namespace White.Knight.Csv.Injection
 			return services;
 		}
 
-		public static IServiceCollection AddCsvRepositoryFeatures(this IServiceCollection services)
+		public static IServiceCollection AddCsvRepositoryFeatures(
+            this IServiceCollection services,
+            IConfigurationRoot configuration)
 		{
 			services
-                .AddRepositoryFeatures()
+                .AddRepositoryFeatures<CsvRepositoryConfigurationOptions>(configuration)
 				.AddScoped(typeof(CsvRepositoryFeatures<>), typeof(CsvRepositoryFeatures<>))
 				.AddScoped(typeof(ICsvLoader<>), typeof(CsvLoader<>));
 
